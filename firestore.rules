@@ -5,6 +5,20 @@ service cloud.firestore {
     match /users/{userId} {
       allow read: if Signedin() && request.auth.uid == userId;  
     }
+    }
+    match /match/{matchId}{
+    allow read: if checkMatch();
+    allow write: if IsAdmin();
+    allow delete: if IsAdmin();
+    allow update: if IsAdmin();
+    allow create: if IsAdmin();
+    function IsAdmin(){
+      return Signedin() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+    function checkMatch(){
+      return SignedinIn() && get(/databases/$(database)/documents/users/$(matchId)).data.users.contains(request.auth.uid);
+    }
+    }
     match /events/{eventId}{
     allow write: if IsAdmin();
     allow delete: if IsAdmin();
