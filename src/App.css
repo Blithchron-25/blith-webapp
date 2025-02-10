@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.bg-navbar {
+    background-color: #020012;
+}
+
+.bg-sidemenu {
+    background-color: #290052;
+}
