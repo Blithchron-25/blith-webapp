@@ -1,19 +1,10 @@
 import React from "react";
-import backlong from "../assets/background/backlong.png";
-
-export function Home() {
+function Home() {
   return (
-    <div
-      style={{
-        backgroundImage: `url(${backlong})`,
-        backgroundSize: "contain",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        height: "100vh",
-        width: "100vw",
-      }}>
+    <div>
+      <h1>This is the home page</h1>
     </div>
   );
-};
+}
 
 export default Home;
