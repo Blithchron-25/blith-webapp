@@ -5,6 +5,7 @@ import Home from './pages/home.jsx';
 import About from './pages/about.jsx';
 import Rewards from "./pages/Rewards.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Scanner from "./pages/Scanner.jsx";
 function App() {
   return (
     <div>
@@ -13,6 +14,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="about" element={<About />} />
       <Route path="rewards" element={<Rewards />} />
+      <Route path='scanner' element={<Scanner />} />
     </Routes>
     </div>
   );
