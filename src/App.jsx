@@ -5,16 +5,22 @@ import Home from './pages/home.jsx';
 import About from './pages/about.jsx';
 import EventsPage from './pages/events.jsx';
 import EventPage from './pages/event.jsx';
+import Rewards from "./pages/Rewards.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
-	return (
-		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="about" element={<About />} />
-			<Route path="events" element={<EventsPage />} />
+  return (
+    <div>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="rewards" element={<Rewards />} />
+       <Route path="events" element={<EventsPage />} />
 			<Route path="event" element={<EventPage />} />
-		</Routes>
-	);
+    </Routes>
+    </div>
+  );
 }
 
 export default App;

@@ -1,0 +1,40 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /users/{userId} {
+      allow read: if Signedin() && request.auth.uid == userId;  
+    }
+    match /events/{eventId}{
+    allow write: if IsAdmin();
+    allow delete: if IsAdmin();
+    allow read: if Signedin();
+    allow update: if IsAdmin();
+    function IsAdmin(){
+      return Signedin() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+    }
+    match /poll/{pollId}{
+    allow write: if IsAdmin();
+    allow delete: if IsAdmin();
+    allow read: if Signedin();
+    allow update: if IsAdmin();
+    function IsAdmin(){
+      return Signedin() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+    }
+    match /pollAns/{pollId}{
+    allow write: if IsAdmin();
+    allow delete: if IsAdmin();
+    allow read: if IsAdmin();
+    allow update: if IsAdmin();
+    function IsAdmin(){
+      return Signedin() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+    }
+  }
+}
+
+function Signedin(){
+  return request.auth != null;
+}
