@@ -56,7 +56,7 @@ const Navbar = () => {
           </div>
         </div>
       ) : (
-        <nav className="bg-navbar mb-1">
+        <nav className="bg-navbar mb-1 w-screen">
           <div className="text-white p-2 flex flex-row items-center">
             <GiHamburgerMenu size={20} onClick={handleHam} />
             <img
