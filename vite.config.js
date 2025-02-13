@@ -44,13 +44,20 @@ const manifestForPlugIn = {
 		orientation: "portrait",
 		screenshots: [
 			{
-			src: "source/image1.png",
-			sizes: "640x320",
-			type: "image/png",
-			form_factor: "wide",
-			label: "Wonder Widgets"
-			}
-		]
+				src: "/screenshot1.png",
+				sizes: "320x900",
+				type: "image/png",
+				form_factor: "narrow",
+				label: "Home",
+			},
+			{
+				src: "/screenshot2.png",
+				sizes: "320x900",
+				type: "image/png",
+				form_factor: "narrow",
+				label: "Home",
+			},
+		],
 	},
 };
 
