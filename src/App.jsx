@@ -1,40 +1,51 @@
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
-import './pages/stylesheets/tailwind.css';
-import Home from './pages/home.jsx';
-import About from './pages/about.jsx';
-import Profile from './pages/profile.jsx';
-import EventsPage from './pages/events.jsx';
-import EventPage from './pages/event.jsx';
-import Rewards from './pages/Rewards.jsx';
-import Navbar from './components/Navbar.jsx';
-import Scanner from './pages/Scanner.jsx';
-import PrivateRoute from './components/privateRoute.jsx';
-import Login from './pages/Login.jsx';
-import AuthProvider from './firebase/AuthContext.jsx';
 import QuestionCard from './components/QuestionCard.jsx';
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Page_2 from "./pages/page2.jsx";
+import "./pages/stylesheets/tailwind.css";
+import React, { useEffect, useState } from "react";
+import Home from "./pages/home.jsx";
+import About from "./pages/about.jsx";
+import Profile from "./pages/profile.jsx";
+import EventsPage from "./pages/events.jsx";
+import EventPage from "./pages/event.jsx";
+import Rewards from "./pages/Rewards.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Scanner from "./pages/Scanner.jsx";
+import PrivateRoute from "./components/privateRoute.jsx";
+import Login from "./pages/Login.jsx";
+import AuthProvider from "./firebase/AuthContext.jsx";
+import Leaderboard from "./pages/Leaderboard.jsx";
+import Banner from "./components/Banner.jsx";
 
-function App() {
+const App = () => {
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(window.innerWidth < 768);
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	if (!isMobile) {
+		return <Banner />;
+	}
+
+
 	return (
 		<>
 			<AuthProvider>
 				<Navbar />
 				<Routes>
-					<Route path="/" element={<Home />} />
 					<Route path="about" element={<About />} />
 					<Route
 						path="profile"
 						element={
 							<PrivateRoute>
-								<Profile
-									user={{
-										name: 'FULL NAME',
-										profile_picture:
-											'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRLM_YMOn41npXKC5fX-TSRfe20jO-nK1cfON36eskj5100UzlH4JMmJVsjNYxZPV4R0vw6DHIw0dqN-osUB5Iw7Q',
-										blith_credits: 'Credits',
-										some_data: 'Some Data',
-									}}
-								/>
+								<Profile />
 							</PrivateRoute>
 						}
 					/>
@@ -54,14 +65,25 @@ function App() {
 							</PrivateRoute>
 						}
 					/>
-
 					<Route path="events" element={<EventsPage />} />
 					<Route path="event" element={<EventPage />} />
 					<Route path="login" element={<Login />} />
+          			<Route path="/" element={<Page_2 />} />
+					<Route
+						path="/leaderboard"
+						element={
+							<PrivateRoute>
+								<Leaderboard />
+							</PrivateRoute>
+						}
+					/>
+
 				</Routes>
 			</AuthProvider>
 		</>
 	);
-}
+};
+
+
 
 export default App;
