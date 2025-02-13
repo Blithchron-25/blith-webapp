@@ -108,7 +108,7 @@ function QuestionCard({queId}) {
 	}
 
 	return (
-		<div className="container">
+		<div className="ques-container">
 			<div className="ques">
 				<h2>{example.text}</h2>
 			</div>

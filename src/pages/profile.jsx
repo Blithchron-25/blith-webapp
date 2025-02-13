@@ -57,15 +57,17 @@ useEffect(() => {
                     <img id="profile_picture" src={user?.photo} />
                     <div id="profile_name">{user.username}</div>
                     <div className="mt-6">
-                        <div className="flex flex-row items-center justify-center">
+                      <div style={{display: "flex", flexDirection: "column", alignItems: "center", borderRadius: "10px", backgroundColor: "rgba(0, 0, 0, 0.2)", margin: "0 10vw"}}>
+                        <div className="flex flex-row items-center justify-center mt-10">
                             <div className="rounded-full">
                                 <img src={coin} alt="coin" className="mr-auto ml-auto size-15" />
                             </div>
-                            <h2 className="mr-5 text-3xl font-bold drop-shadow-lg  text-white" style={{ textShadow: "5px 0px 10px rgb(156, 10, 119)"}}>BlithCoins</h2>
+                            <h2 className="text-3xl font-bold drop-shadow-lg text-white mb-0" style={{ textShadow: "5px 0px 10px rgb(156, 10, 119)"}}>BlithCoins</h2>
                         </div>
-                        <h3 className="text-xl mt-[10px] mb-[40px] font-bold drop-shadow-lg text-white" style={{ textShadow: "5px 0px 10px rgb(156, 10, 119)"}}>{blithCredits}</h3>
+                        <h3 className="text-xxl mt-10px mb-[40px] font-bold drop-shadow-lg text-white" style={{ textShadow: "5px 0px 10px rgb(156, 10, 119)"}}>{blithCredits}</h3>
+                      </div>
                     </div>
-                    <button onClick={handleLogout} className="bg-sidemenu text-2xl flex flex-row items-center justify-center mt-4">
+                    <button onClick={handleLogout} className="bg-sidemenu mt-10 text-2xl flex flex-row items-center justify-center mt-4 mx-auto">
                         LogOut
                         <RiLogoutCircleRLine size={20} className="ml-2" />
                     </button>
