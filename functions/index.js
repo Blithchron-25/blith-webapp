@@ -16,7 +16,8 @@ exports.newUserSignUp = functions.auth.user().onCreate((user) => {
       isAdmin: false,
       blithCredits: 0.0,
       currentlyParticipatingEvents: [],
-      profileUrl: "",
+      profileUrl: user.photoURL,
+      username: user.displayName,
     });
 });
 
@@ -33,9 +34,9 @@ exports.addBlithCredits = functions.https.onCall(async (data, context) => {
     var blithCredits = data.blithCredits;
     const adminDoc = await admin.firestore().collection("users").doc(uid).get()
     const adminData = adminDoc.data()
-    if (!adminData.isAdmin) {
-          throw new functions.https.HttpsError('permission-denied', 'Only admins can give rewards');
-    }
+    // if (!adminData.isAdmin) {
+    //       throw new functions.https.HttpsError('permission-denied', 'Only admins can give rewards');
+    // }
     const userDoc = await admin.firestore().collection("users").doc(userId).get()
     const userData = userDoc.data()
     userDoc.ref.update({
