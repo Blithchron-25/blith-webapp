@@ -39,7 +39,6 @@ const App = () => {
 			<AuthProvider>
 				<Navbar />
 				<Routes>
-					<Route path="/" element={<Home />} />
 					<Route path="about" element={<About />} />
 					<Route
 						path="profile"
@@ -68,7 +67,7 @@ const App = () => {
 					<Route path="events" element={<EventsPage />} />
 					<Route path="event" element={<EventPage />} />
 					<Route path="login" element={<Login />} />
-          <Route path="page_2" element={<Page_2 />} />
+          			<Route path="/" element={<Page_2 />} />
 					<Route
 						path="/leaderboard"
 						element={
