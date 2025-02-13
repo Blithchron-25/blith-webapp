@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import "./pages/stylesheets/tailwind.css";
-import React from 'react';
 import Home from './pages/home.jsx';
 import About from './pages/about.jsx';
 import Profile from "./pages/profile.jsx"; 
