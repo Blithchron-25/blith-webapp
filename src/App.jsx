@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import Page_2 from "./pages/page2.jsx";
+
 import "./pages/stylesheets/tailwind.css";
 import React, { useEffect, useState } from "react";
 import Home from "./pages/home.jsx";
@@ -66,6 +68,7 @@ const App = () => {
 					<Route path="events" element={<EventsPage />} />
 					<Route path="event" element={<EventPage />} />
 					<Route path="login" element={<Login />} />
+          <Route path="page_2" element={<Page_2 />} />
 					<Route
 						path="/leaderboard"
 						element={
@@ -79,5 +82,6 @@ const App = () => {
 		</>
 	);
 };
+
 
 export default App;
