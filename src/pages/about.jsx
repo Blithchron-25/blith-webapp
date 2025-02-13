@@ -24,7 +24,7 @@ function About() {
 				alt="Overlay"
 				style={{
 					position: "absolute",
-					top: "15vh",
+					top: "13vh",
 					left: "50%",
 					transform: "translateX(-50%)",
 					maxWidth: "90%",
@@ -36,7 +36,7 @@ function About() {
 			<div
 				style={{
 					position: "absolute",
-					top: "60vh",
+					top: "55vh",
 					left: "5%",
 					width: "90%",
 					height: "30vh",
