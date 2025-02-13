@@ -4,6 +4,7 @@ import {getFunctions, httpsCallable} from "firebase/functions";
 import { Link } from "react-router-dom";
 import { useAuth } from "../firebase/AuthContext";
 import { app } from "../firebase/firebase.config";
+import QuestionCard from "../components/QuestionCard";
 
 const QRScan = () => {
     const [scanned, setScanned] = useState(false);
@@ -25,31 +26,6 @@ const QRScan = () => {
 	};
 
 
-    // const handleSubmit = async () => {
-        
-    //         const uid = currentUser?.uid;
-    //         console.log("User ID:", uid);
-    //         const credit = blithCredits;
-    //         console.log("Blith Credits:", credit);
-    //         const rdata = {"userId": uid, "blithCredits": credit};
-    //         const res = await addcredits(rdata);
-    //         console.log(res);
-    //         const d = await res.data;
-    //         console.log(d);
-
-    //         if(res.data.blithCredits !== 0) {
-    //             console.log("Blith Credits Added Successfully");
-    //             setBlithCredits(0);
-    //             setUserUid("");
-    //             setScanned(false);
-    //         }
-    //         else {
-    //             console.error("Error Adding Blith Credits");
-    //         }
-        
-    // }
-
-
 	const handleCancel = () => {
 		setBlithCredits(0);
 		setUserUid('');
@@ -65,9 +41,9 @@ const QRScan = () => {
                     style={{ width: "60%", height: "60%" }}
                     onError={handleError}
                     onScan={handleScan}
-                    constraints={{
-                        video: { facingMode: { exact: "environment" } } // Forces back camera
-                    }}
+                    // constraints={{
+                    //     video: { facingMode: { exact: "environment" } } // Forces back camera
+                    // }}
                 />
                 <Link to="/">
                 <button
@@ -78,7 +54,7 @@ const QRScan = () => {
                 </Link>
                 </>
             ) : (
-                <></>//<QuestionCard id={questionId}></QuestionCard>
+                <QuestionCard queId={questionId} />
             )}
         </div>
     );

@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../pages/stylesheets/questionCard.css';
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { FaPaperPlane } from 'react-icons/fa';
 import { useAuth } from '../firebase/AuthContext';
 import { app } from '../firebase/firebase.config';
-
-const example = {
-	ques: 'Which event is dedicated to gaming at Blithchron?',
-	type: 'file',
-	ans: 'skirmish',
-};
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 async function checkLegitimacy(url) {
 	if (!url.includes('https://drive.google.com/')) {
@@ -26,13 +21,30 @@ async function checkLegitimacy(url) {
 	return isLegit;
 }
 
-function QuestionCard(props) {
+function QuestionCard({queId}) {
 	const [ans, setAns] = useState('');
 
 	const { currentUser } = useAuth();
 
 	const functions = getFunctions(app);
 	const addcredits = httpsCallable(functions, 'addBlithCredits');
+	const firebase = getFirestore(app);
+	const [example, setExample] = useState({});
+
+	useEffect(() => {
+		const fetchQuestion = async () => {
+			const docRef = doc(firebase, 'questions', queId);
+			const docSnap = await getDoc(docRef);
+			if (docSnap.exists()) {
+				const data = docSnap.data();
+				setExample(data);
+				console.log(data);
+			} else {
+				console.log('No such document!');
+			}
+		};
+		fetchQuestion();
+	}, []);
 
 	const handleInputChange = (event) => {
 		setAns(event.target.value);
@@ -41,7 +53,7 @@ function QuestionCard(props) {
 	async function handleClick() {
 		var correct = false;
 		if (example.type == 'text') {
-			if (example.ans.includes(ans.toLowerCase())) {
+			if (example.answer.includes(ans.toLowerCase())) {
 				correct = true;
 			}
 		} else if (example.type == 'file') {
@@ -50,7 +62,7 @@ function QuestionCard(props) {
 		const rdata = { userId: currentUser.uid, blithCredits: 30 };
 		const res = await addcredits(rdata);
 		const d = await res.json();
-		console.log(d);
+		// console.log(d);
 
 		if (res.ok) {
 			console.log('Blith Credits Added Successfully');
@@ -62,7 +74,7 @@ function QuestionCard(props) {
 	return (
 		<div className="container">
 			<div className="ques">
-				<h2>{example.ques}</h2>
+				<h2>{example.text}</h2>
 			</div>
 			<div className="ans">
 				<div className="text-box">
