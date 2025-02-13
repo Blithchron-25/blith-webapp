@@ -6,13 +6,19 @@ import { RiLogoutCircleRLine } from "react-icons/ri";
 import { GrGallery } from "react-icons/gr";
 import { FaHandshake } from "react-icons/fa";
 import { GrMap } from "react-icons/gr";
+import { Link } from "react-router-dom";
+import { useAuth } from "../firebase/AuthContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { logout } = useAuth();
   const handleHam = () => {
     isOpen ? setIsOpen(false) : setIsOpen(true);
   };
+
+  const handleLogout = async () => {
+    await logout();
+  }
 
   return (
     <div>
@@ -26,33 +32,43 @@ const Navbar = () => {
             />
           </div>
           <div className="grid grid-cols-2 gap-4 ml-4 mr-4 mb-2 mt-8 place-items-center">
+            <Link to="/events">
             <div className="border-white border-2 size-24 opacity-70 flex flex-col items-center justify-center">
               <img src="/src/assets/events.png" alt="events" className="size-10" />
                 EVENTS
             </div>
+            </Link>
+            <Link to='/gallery'>
             <div className="border-white border-2 opacity-70 size-24 flex flex-col items-center justify-center">
               <GrGallery size={30} />
               GALLERY
             </div>
+            </Link>
+            <Link to='/sponsors'>
             <div className="border-white border-2 size-24 opacity-70 flex flex-col items-center justify-center">
               <FaHandshake size={30} />
               SPONSORS
             </div>
+            </Link>
+            <Link to='/map'>
             <div className="border-white border-2 size-24 opacity-70 flex flex-col items-center justify-center">
               <GrMap size={30} />
               MAP
             </div>
+            </Link>
+            <Link to='/team'>
             <div className="border-white border-2 size-24 opacity-70 flex flex-col items-center justify-center">
               <img src='/src/assets/team.png' alt="team" className="size-10" />
               TEAM
             </div>
+            </Link>
           </div>
             <div className="mt-auto">
           <hr className="border-white" />
-          <div className="text-2xl flex flex-row items-center justify-center">
+          <button onClick={handleLogout} className="bg-sidemenu text-2xl flex flex-row items-center justify-center">
             LogOut
             <RiLogoutCircleRLine size={20} className="ml-2" />
-          </div>
+          </button>
           </div>
         </div>
       ) : (
@@ -64,7 +80,7 @@ const Navbar = () => {
               alt="logo"
               className="w-20 h-10 m-auto"
             />
-            <FaUser size={20} />
+            <FaUser size={20} className="mr-2"/>
           </div>
         </nav>
       )}
