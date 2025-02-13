@@ -34,8 +34,25 @@ function QuestionCard({queId}) {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		const fetchUserCredits = async () => {
+			const userdocRef = doc(firebase, 'users', currentUser.uid);
+			const userDoc = await getDoc(userdocRef);
+			if (userDoc.exists()) {
+				const currentlyParticipatingEvents = data.currentlyParticipatingEvents;
+				if(currentlyParticipatingEvents.includes(queId)){
+					alert("You have already submitted in this question");
+					navigate("/profile");
+				}
+			} else {
+				console.log('User not found');
+			}
+		};
+		fetchUserCredits();
+	}, [])
+
+	useEffect(() => {
 		const fetchQuestion = async () => {
-			const docRef = doc(firebase, 'questions', queId);
+			const docRef = doc(firebase, 'questions', id);
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				const data = docSnap.data();
@@ -52,9 +69,9 @@ function QuestionCard({queId}) {
 		setAns(event.target.value);
 	};
 
-	const setQuestion = (id) => {
+	const setQuestion = async (id) => {
 		const docRef = doc(firebase, 'questions', id);
-		const docSnap = getDoc(docRef);
+		const docSnap = await getDoc(docRef);
 		if (docSnap.exists()) {
 			const data = docSnap.data();
 			const currentlyParticipatingEvents = data.currentlyParticipatingEvents;
