@@ -1,12 +1,11 @@
 import React from "react";
 import '../fonts.css';
-import React from "react";
 import Page1 from "./home";
 import Page2 from "./page2";
 import Page3 from "./page3";
 import Page4 from "./about";
 
-const App = () => {
+const LandingPage = () => {
   return (
     <div
       style={{
@@ -31,4 +30,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default LandingPage;

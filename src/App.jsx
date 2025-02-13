@@ -1,10 +1,8 @@
 import QuestionCard from './components/QuestionCard.jsx';
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Page_2 from "./pages/page2.jsx";
 import "./pages/stylesheets/tailwind.css";
 import React, { useEffect, useState } from "react";
-import Home from "./pages/home.jsx";
 import About from "./pages/about.jsx";
 import Profile from "./pages/profile.jsx";
 import EventsPage from "./pages/events.jsx";
@@ -17,6 +15,7 @@ import Login from "./pages/Login.jsx";
 import AuthProvider from "./firebase/AuthContext.jsx";
 import Leaderboard from "./pages/Leaderboard.jsx";
 import Banner from "./components/Banner.jsx";
+import LandingPage from './pages/landingpage.jsx';
 
 const App = () => {
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -68,7 +67,7 @@ const App = () => {
 					<Route path="events" element={<EventsPage />} />
 					<Route path="event" element={<EventPage />} />
 					<Route path="login" element={<Login />} />
-          			<Route path="/" element={<Page_2 />} />
+          			<Route path="/" element={<LandingPage />} />
 					<Route
 						path="/leaderboard"
 						element={
