@@ -5,6 +5,7 @@ import { FaPaperPlane } from 'react-icons/fa';
 import { useAuth } from '../firebase/AuthContext';
 import { app } from '../firebase/firebase.config';
 import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 async function checkLegitimacy(url) {
 	if (!url.includes('https://drive.google.com/')) {
@@ -30,6 +31,7 @@ function QuestionCard({queId}) {
 	const addcredits = httpsCallable(functions, 'addBlithCredits');
 	const firebase = getFirestore(app);
 	const [example, setExample] = useState({});
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchQuestion = async () => {
@@ -76,9 +78,10 @@ function QuestionCard({queId}) {
 		const d = await res.json();
 		// console.log(d);
 
-		if (res.ok) {
+		if (res.data.blithCredits !== 0) {
 			console.log('Blith Credits Added Successfully');
-
+			setQuestion(queId);
+			navigate("/profile");
 		} else {
 			console.error('Error Adding Blith Credits');
 		}
