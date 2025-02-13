@@ -38,7 +38,10 @@ function QuestionCard({queId}) {
 			const userdocRef = doc(firebase, 'users', currentUser.uid);
 			const userDoc = await getDoc(userdocRef);
 			if (userDoc.exists()) {
-				const currentlyParticipatingEvents = data.currentlyParticipatingEvents;
+				const data = userDoc.data();
+				console.log(data);
+				const currentlyParticipatingEvents = data.currentlyParticipatingEvents || [];
+				console.log(currentlyParticipatingEvents);
 				if(currentlyParticipatingEvents.includes(queId)){
 					alert("You have already submitted in this question");
 					navigate("/profile");
@@ -52,7 +55,7 @@ function QuestionCard({queId}) {
 
 	useEffect(() => {
 		const fetchQuestion = async () => {
-			const docRef = doc(firebase, 'questions', id);
+			const docRef = doc(firebase, 'questions', queId);
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				const data = docSnap.data();
@@ -70,14 +73,14 @@ function QuestionCard({queId}) {
 	};
 
 	const setQuestion = async (id) => {
-		const docRef = doc(firebase, 'questions', id);
+		const docRef = doc(firebase, 'users', currentUser.uid);
 		const docSnap = await getDoc(docRef);
 		if (docSnap.exists()) {
 			const data = docSnap.data();
-			const currentlyParticipatingEvents = data.currentlyParticipatingEvents;
-			currentlyParticipatingEvents.push(currentUser.uid);
+			const currentlyParticipatingEvents = data.currentlyParticipatingEvents || [];
+			currentlyParticipatingEvents.push(queId);
 			const updatedData = { currentlyParticipatingEvents: currentlyParticipatingEvents };
-			updateDoc(docRef, updatedData);
+			await updateDoc(docRef, updatedData);
 		}
 	}
 
