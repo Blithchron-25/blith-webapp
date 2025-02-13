@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import QrReader from "react-qr-scanner";
 import {getFunctions, httpsCallable} from "firebase/functions";
-//import { app } from "../firebase/firebaseconfig";
 import { Link } from "react-router-dom";
+import { useAuth } from "../firebase/AuthContext";
+import { app } from "../firebase/firebase.config";
 
 const QRScan = () => {
     const [scanned, setScanned] = useState(false);
-    const [blithCredits, setBlithCredits] = useState(0);
+    const [blithCredits, setBlithCredits] = useState(30);
     const [questionId, setQuestionId] = useState("");
-    //const functions = getFunctions(app);
-    //const addcredits = httpsCallable(functions, "addBlithCredits");
+    const { currentUser } = useAuth();
+    const functions = getFunctions(app);
+    const addcredits = httpsCallable(functions, "addBlithCredits");
 
     const handleScan = async (data) => {
         if (data && !scanned) {
@@ -25,17 +27,18 @@ const QRScan = () => {
 
 
     // const handleSubmit = async () => {
-    //     if(blithCredits !== 0 && userUid !== "") {
-    //         const uid = userUid;
+        
+    //         const uid = currentUser?.uid;
     //         console.log("User ID:", uid);
     //         const credit = blithCredits;
     //         console.log("Blith Credits:", credit);
     //         const rdata = {"userId": uid, "blithCredits": credit};
     //         const res = await addcredits(rdata);
-    //         const d = await res.json();
+    //         console.log(res);
+    //         const d = await res.data;
     //         console.log(d);
 
-    //         if(res.ok) {
+    //         if(res.data.blithCredits !== 0) {
     //             console.log("Blith Credits Added Successfully");
     //             setBlithCredits(0);
     //             setUserUid("");
@@ -44,17 +47,17 @@ const QRScan = () => {
     //         else {
     //             console.error("Error Adding Blith Credits");
     //         }
-    //     }
+        
     // }
 
-    // const handleCancel = () => {
-    //     setBlithCredits(0);
-    //     setUserUid("");
-    //     setScanned(false);
-    // };
+    const handleCancel = () => {
+        setBlithCredits(0);
+        setUserUid("");
+        setScanned(false);
+    };
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center mt-20">
             {!scanned ? (
                 <>
                 <QrReader
