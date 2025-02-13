@@ -33,7 +33,7 @@ const NavItem = styled.div`
 `;
 
 const IconContainer = styled.div`
-	width: 40px;
+	width: 80px;
 	height: 40px;
 	border-radius: 50%;
 	background-color: ${props =>
