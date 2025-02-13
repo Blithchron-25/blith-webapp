@@ -25,8 +25,8 @@ const Navbar = () => {
 
 	return (
 		<div>
-			{isOpen ? (
-				<div className="bg-sidemenu text-white p-2 min-h-screen flex flex-col">
+			{isOpen &&
+				<div className="bg-sidemenu text-white p-2 min-h-screen flex z-10 flex-col fixed">
 					<div>
 						<RxCross1 size={25} onClick={handleHam} className="ml-auto mr-4 mt-2 mb-2" />
 					</div>
@@ -73,8 +73,8 @@ const Navbar = () => {
 						</button>
 					</div>
 				</div>
-			) : (
-				<nav className="bg-navbar mb-1 w-screen">
+			}
+      <nav className="bg-navbar mb-1 w-screen z-10 fixed">
 					<div className="text-white p-4 flex flex-row items-center">
 						<GiHamburgerMenu size={25} onClick={handleHam} />
 						<Link to="/" className="w-25 h-10 m-auto">
@@ -85,7 +85,6 @@ const Navbar = () => {
 						</Link>
 					</div>
 				</nav>
-			)}
 		</div>
 	);
 };
