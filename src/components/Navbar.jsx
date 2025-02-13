@@ -73,14 +73,17 @@ const Navbar = () => {
         </div>
       ) : (
         <nav className="bg-navbar mb-1 w-screen">
-          <div className="text-white p-2 flex flex-row items-center">
-            <GiHamburgerMenu size={20} onClick={handleHam} />
+          <div className="text-white p-4 flex flex-row items-center">
+            <GiHamburgerMenu size={25} onClick={handleHam} />
+            <Link to="/" className="w-25 h-10 m-auto">
             <img
               src="/src/assets/name.png"
               alt="logo"
-              className="w-20 h-10 m-auto"
             />
-            <FaUser size={20} className="mr-2"/>
+            </Link>
+            <Link to="/profile" className="mr-2">
+            <FaUser size={25} className="text-white"/>
+            </Link>
           </div>
         </nav>
       )}
