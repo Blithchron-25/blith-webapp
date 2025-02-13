@@ -1,10 +1,19 @@
 import React from "react";
+import backg from "../assets/background/home.png";
+
 function Home() {
   return (
-    <div>
-      <h1>This is the home page</h1>
+    <div
+      style={{
+        height: "100vh",
+        width: "100%",
+        backgroundImage: `url(${backg})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat"
+      }}
+    >
     </div>
   );
-}
-
+};
 export default Home;
