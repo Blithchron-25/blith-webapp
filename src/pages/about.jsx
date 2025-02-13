@@ -36,10 +36,10 @@ function About() {
 			<div
 				style={{
 					position: "absolute",
-					top: "55vh",
+					top: "60vh",
 					left: "5%",
 					width: "90%",
-					height: "30vh",
+					aspectRatio: "16/9",
 					backgroundColor: "rgb(58, 13, 83)",
 					objectFit: "contain",
 					borderRadius: "20px",
