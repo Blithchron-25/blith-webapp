@@ -15,7 +15,7 @@ import Login from './pages/Login.jsx';
 import AuthProvider from './firebase/AuthContext.jsx';
 import Banner from './components/Banner.jsx';
 
-function App() {
+const App = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -33,24 +33,19 @@ function App() {
 
   return (
     <>
-      <AuthProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="profile" element={<PrivateRoute><Profile user={{
-            name: "FULL NAME",
-            profile_picture: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRLM_YMOn41npXKC5fX-TSRfe20jO-nK1cfON36eskj5100UzlH4JMmJVsjNYxZPV4R0vw6DHIw0dqN-osUB5Iw7Q",
-            blith_credits: "Credits",
-            some_data: "Some Data"
-          }} /></PrivateRoute>} />
-          <Route path="rewards" element={<PrivateRoute><Rewards /></PrivateRoute>} />
-          <Route path='scanner' element={<PrivateRoute><Scanner /></PrivateRoute>} />
-          <Route path="events" element={<EventsPage />} />
-          <Route path="event" element={<EventPage />} />
-          <Route path="login" element={<Login />} />
-        </Routes>
-      </AuthProvider>
+    <AuthProvider>
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
+      <Route path="rewards" element={<PrivateRoute><Rewards /></PrivateRoute>} />
+      <Route path='scanner' element={<PrivateRoute><Scanner /></PrivateRoute>} />
+       <Route path="events" element={<EventsPage />} />
+			<Route path="event" element={<EventPage />} />
+      <Route path="login" element={<Login />} />
+    </Routes>
+    </AuthProvider>
     </>
   );
 }
