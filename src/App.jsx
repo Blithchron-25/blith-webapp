@@ -11,6 +11,7 @@ import Rewards from "./pages/Rewards.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Scanner from "./pages/Scanner.jsx";
 import PrivateRoute from './components/privateRoute.jsx';
+import Login from './pages/Login.jsx';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path='scanner' element={<PrivateRoute><Scanner /></PrivateRoute>} />
        <Route path="events" element={<EventsPage />} />
 			<Route path="event" element={<EventPage />} />
+      <Route path="login" element={<Login />} />
     </Routes>
     </>
   );
