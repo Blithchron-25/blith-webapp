@@ -16,6 +16,7 @@ import AuthProvider from "./firebase/AuthContext.jsx";
 import Leaderboard from "./pages/Leaderboard.jsx";
 import Banner from "./components/Banner.jsx";
 import LandingPage from './pages/landingpage.jsx';
+import BottomNavBar from './components/BottomNavBar.jsx';
 
 const App = () => {
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -78,6 +79,7 @@ const App = () => {
 					/>
 
 				</Routes>
+				<BottomNavBar />
 			</AuthProvider>
 		</>
 	);

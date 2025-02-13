@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { MdQrCodeScanner } from "react-icons/md";
 
 const BottomNavContainer = styled.div`
   background-color: #673ab7; /* Example: Deep Purple */
@@ -54,11 +56,13 @@ const Label = styled.span`
 
 function BottomNavBar() {
   const [activeTab, setActiveTab] = useState("home");
+  const navigate = useNavigate();
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
     // You can add navigation logic here using react-router or any other routing library
     console.log(`Navigating to: ${tab}`);
+    navigate(`/${tab}`);
   };
 
   return (
@@ -66,7 +70,7 @@ function BottomNavBar() {
       <NavItem
         // @ts-ignore
         active={activeTab === "home"}
-        onClick={() => handleTabChange("home")}
+        onClick={() => handleTabChange("")}
       >
         <IconContainer 
 // @ts-ignore
@@ -78,41 +82,28 @@ function BottomNavBar() {
 
       <NavItem
         // @ts-ignore
-        active={activeTab === "favorites"}
-        onClick={() => handleTabChange("favorites")}
+        active={activeTab === "scanner"}
+        onClick={() => handleTabChange("scanner")}
       >
         <IconContainer 
 // @ts-ignore
-        active={activeTab === "favorites"}>
+        active={activeTab === "scanner"}>
+          <Icon><MdQrCodeScanner /></Icon>
+        </IconContainer>
+        <Label>Scanner</Label>
+      </NavItem>
+
+      <NavItem
+        // @ts-ignore
+        active={activeTab === "leaderboard"}
+        onClick={() => handleTabChange("leaderboard")}
+      >
+        <IconContainer 
+// @ts-ignore
+        active={activeTab === "leaderboard"}>
           <Icon>⭐️</Icon>
         </IconContainer>
-        <Label>Favorites</Label>
-      </NavItem>
-
-      <NavItem
-        // @ts-ignore
-        active={activeTab === "heart"}
-        onClick={() => handleTabChange("heart")}
-      >
-        <IconContainer 
-// @ts-ignore
-        active={activeTab === "heart"}>
-          <Icon>❤️</Icon>
-        </IconContainer>
-        <Label>Heart</Label>
-      </NavItem>
-
-      <NavItem
-        // @ts-ignore
-        active={activeTab === "history"}
-        onClick={() => handleTabChange("history")}
-      >
-        <IconContainer 
-// @ts-ignore
-        active={activeTab === "history"}>
-          <Icon>🕒</Icon>
-        </IconContainer>
-        <Label>History</Label>
+        <Label>Leaderboard</Label>
       </NavItem>
     </BottomNavContainer>
   );
