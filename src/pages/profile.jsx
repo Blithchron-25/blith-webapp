@@ -4,17 +4,21 @@ import { app } from "../firebase/firebase.config";
 import { getAuth } from "firebase/auth";
 import '../stylesheets/profile.css';
 import coin from '../assets/coin1.png';
+import { useAuth } from "../firebase/AuthContext";
 
 
 
-function Profile({ user }) {
+function Profile() {
     const [blithCredits, setBlithCredits] = useState(0);
+    const [userUid, setUserUid] = useState("");
     const firestore = getFirestore(app);
     const auth = getAuth(app);
 
+    const { currentUser } = useAuth();
+    const user = currentUser;
+
 useEffect(() => {
     const fetchUserCredits = async () => {
-      const user = auth.currentUser;
       if(user){
         console.log(user);
         setUserUid(user.uid);
@@ -33,13 +37,20 @@ useEffect(() => {
     };
     fetchUserCredits();
   }, [auth]);
+
+  const fetchImage = async () => {
+    fetch(`${user.photo}`).then((response) => {
+      console.log(response);
+    });
+  }
+
     return (
         <div id="profile-page">
             <div id="profile_bkg"></div>
             <div id="profile">
                 <div id="user-info">
-                    <img id="profile_picture" src={user.profile_picture} />
-                    <div id="profile_name">{user.name}</div>
+                    <img id="profile_picture" src={user?.photo} />
+                    <div id="profile_name">{user.username}</div>
                     <div className="mt-6">
                         <div className="flex flex-row items-center justify-center">
                             <div className="rounded-full">
