@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { app } from "../firebase/firebase.config";
 import { getAuth } from "firebase/auth";
-import '../stylesheets/profile.css';
+import './stylesheets/profile.css';
 import coin from '../assets/coin1.png';
 import { useAuth } from "../firebase/AuthContext";
 import { RiLogoutCircleRLine } from "react-icons/ri";
