@@ -20,10 +20,9 @@ const QRScan = () => {
             setScanned(true);
         }
     };
-
-    const handleError = (err) => {
-        console.error("QR Scan Error:", err);
-    };
+	const handleError = (err) => {
+		console.error('QR Scan Error:', err);
+	};
 
 
     // const handleSubmit = async () => {
@@ -50,11 +49,12 @@ const QRScan = () => {
         
     // }
 
-    const handleCancel = () => {
-        setBlithCredits(0);
-        setUserUid("");
-        setScanned(false);
-    };
+
+	const handleCancel = () => {
+		setBlithCredits(0);
+		setUserUid('');
+		setScanned(false);
+	};
 
     return (
         <div className="flex flex-col items-center mt-20">

@@ -1,7 +1,7 @@
+import QuestionCard from './components/QuestionCard.jsx';
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import Page_2 from "./pages/page2.jsx";
-
 import "./pages/stylesheets/tailwind.css";
 import React, { useEffect, useState } from "react";
 import Home from "./pages/home.jsx";
@@ -33,6 +33,7 @@ const App = () => {
 	if (!isMobile) {
 		return <Banner />;
 	}
+
 
 	return (
 		<>
@@ -76,11 +77,13 @@ const App = () => {
 							</PrivateRoute>
 						}
 					/>
+
 				</Routes>
 			</AuthProvider>
 		</>
 	);
 };
+
 
 
 export default App;
