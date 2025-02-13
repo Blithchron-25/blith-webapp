@@ -12,6 +12,7 @@ import Scanner from "./pages/Scanner.jsx";
 import PrivateRoute from './components/privateRoute.jsx';
 import Login from './pages/Login.jsx';
 import AuthProvider from './firebase/AuthContext.jsx';
+import Leaderboard from './pages/Leaderboard.jsx';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
        <Route path="events" element={<EventsPage />} />
 			<Route path="event" element={<EventPage />} />
       <Route path="login" element={<Login />} />
+      <Route path='/leaderboard' element={<PrivateRoute><Leaderboard /></PrivateRoute>} />
     </Routes>
     </AuthProvider>
     </>

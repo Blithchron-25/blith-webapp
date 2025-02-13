@@ -41,6 +41,15 @@
 	border: 2px solid #ac28ea;
 	box-shadow: 0 0 20px 5px #ac28ea;
 }
+.leader-cont {
+	height: 8vh;
+	width: 80vw;
+	margin: 2rem;
+	border-radius: 25px;
+	position: relative;
+	border: 2px solid #ac28ea;
+	box-shadow: 0 0 20px 5px #ac28ea;
+}
 .events-img {
 	height: 20vh;
 	width: 80vw;

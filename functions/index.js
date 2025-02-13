@@ -17,6 +17,7 @@ exports.newUserSignUp = functions.auth.user().onCreate((user) => {
       blithCredits: 0.0,
       currentlyParticipatingEvents: [],
       profileUrl: user.photoURL,
+      username: user.displayName,
     });
 });
 
