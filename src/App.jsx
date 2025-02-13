@@ -10,7 +10,7 @@ import EventPage from './pages/event.jsx';
 import Rewards from "./pages/Rewards.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Scanner from "./pages/Scanner.jsx";
-import PrivateRoute from './components/privateRoute.js';
+import PrivateRoute from './components/privateRoute.jsx';
 
 function App() {
   return (
