@@ -1,12 +1,15 @@
 import React from "react";
 import { useAuth } from "../firebase/AuthContext";
 import { FaGoogle } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const {signInWithGoogle} = useAuth();
+    const navigate = useNavigate();
     const handleLogin = async () => {
         console.log("Login");
         await signInWithGoogle();
+        navigate(-1);
     }
 
     return (
