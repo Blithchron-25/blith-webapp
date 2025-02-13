@@ -1,4 +1,4 @@
-import QuestionCard from './components/QuestionCard.jsx';
+import QuestionCard from "./components/QuestionCard.jsx";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import "./pages/stylesheets/tailwind.css";
@@ -15,8 +15,8 @@ import Login from "./pages/Login.jsx";
 import AuthProvider from "./firebase/AuthContext.jsx";
 import Leaderboard from "./pages/Leaderboard.jsx";
 import Banner from "./components/Banner.jsx";
-import LandingPage from './pages/landingpage.jsx';
-import BottomNavBar from './components/BottomNavBar.jsx';
+import LandingPage from "./pages/landingpage.jsx";
+import BottomNavBar from "./components/BottomNavBar.jsx";
 
 const App = () => {
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
@@ -34,13 +34,12 @@ const App = () => {
 		return <Banner />;
 	}
 
-
 	return (
 		<>
 			<AuthProvider>
 				<Navbar />
 				<Routes>
-					<Route path="about" element={<About />} />
+					{/* <Route path="about" element={<About />} /> */}
 					<Route
 						path="profile"
 						element={
@@ -49,14 +48,14 @@ const App = () => {
 							</PrivateRoute>
 						}
 					/>
-					<Route
+					{/* <Route
 						path="rewards"
 						element={
 							<PrivateRoute>
 								<Rewards />
 							</PrivateRoute>
 						}
-					/>
+					/> */}
 					<Route
 						path="scanner"
 						element={
@@ -65,10 +64,10 @@ const App = () => {
 							</PrivateRoute>
 						}
 					/>
-					<Route path="events" element={<EventsPage />} />
-					<Route path="event" element={<EventPage />} />
+					{/* <Route path="events" element={<EventsPage />} /> */}
+					{/* <Route path="event" element={<EventPage />} /> */}
 					<Route path="login" element={<Login />} />
-          			<Route path="/" element={<LandingPage />} />
+					<Route path="/" element={<LandingPage />} />
 					<Route
 						path="/leaderboard"
 						element={
@@ -77,14 +76,11 @@ const App = () => {
 							</PrivateRoute>
 						}
 					/>
-
 				</Routes>
 				<BottomNavBar />
 			</AuthProvider>
 		</>
 	);
 };
-
-
 
 export default App;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { MdQrCodeScanner } from "react-icons/md";
 
 const BottomNavContainer = styled.div`
-	background-color: #673ab7; /* Example: Deep Purple */
+	background-color: #290052; /* Example: Deep Purple */
 	color: white;
 	display: flex;
 	justify-content: space-around;
@@ -83,6 +83,7 @@ function BottomNavBar() {
 				// @ts-ignore
 				active={activeTab === "scanner"}
 				onClick={() => handleTabChange("scanner")}
+				style={{ marginLeft: "20px" }}
 			>
 				<IconContainer
 					// @ts-ignore
