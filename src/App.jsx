@@ -12,10 +12,12 @@ import Navbar from "./components/Navbar.jsx";
 import Scanner from "./pages/Scanner.jsx";
 import PrivateRoute from './components/privateRoute.jsx';
 import Login from './pages/Login.jsx';
+import AuthProvider from './firebase/AuthContext.jsx';
 
 function App() {
   return (
     <>
+    <AuthProvider>
     <Navbar />
     <Routes>
       <Route path="/" element={<Home />} />
@@ -32,6 +34,7 @@ function App() {
 			<Route path="event" element={<EventPage />} />
       <Route path="login" element={<Login />} />
     </Routes>
+    </AuthProvider>
     </>
   );
 }

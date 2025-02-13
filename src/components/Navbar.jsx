@@ -64,7 +64,7 @@ const Navbar = () => {
               alt="logo"
               className="w-20 h-10 m-auto"
             />
-            <FaUser size={20} />
+            <FaUser size={20} className="mr-2"/>
           </div>
         </nav>
       )}
