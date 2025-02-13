@@ -4,7 +4,7 @@ import { getFunctions, httpsCallable } from 'firebase/functions';
 import { FaPaperPlane } from 'react-icons/fa';
 import { useAuth } from '../firebase/AuthContext';
 import { app } from '../firebase/firebase.config';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, updateDoc } from 'firebase/firestore';
 
 async function checkLegitimacy(url) {
 	if (!url.includes('https://drive.google.com/')) {
@@ -50,6 +50,18 @@ function QuestionCard({queId}) {
 		setAns(event.target.value);
 	};
 
+	const setQuestion = (id) => {
+		const docRef = doc(firebase, 'questions', id);
+		const docSnap = getDoc(docRef);
+		if (docSnap.exists()) {
+			const data = docSnap.data();
+			const currentlyParticipatingEvents = data.currentlyParticipatingEvents;
+			currentlyParticipatingEvents.push(currentUser.uid);
+			const updatedData = { currentlyParticipatingEvents: currentlyParticipatingEvents };
+			updateDoc(docRef, updatedData);
+		}
+	}
+
 	async function handleClick() {
 		var correct = false;
 		if (example.type == 'text') {
@@ -66,6 +78,7 @@ function QuestionCard({queId}) {
 
 		if (res.ok) {
 			console.log('Blith Credits Added Successfully');
+
 		} else {
 			console.error('Error Adding Blith Credits');
 		}
