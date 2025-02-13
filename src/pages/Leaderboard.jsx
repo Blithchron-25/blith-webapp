@@ -21,7 +21,7 @@ const Leaderboard = () => {
                     ...doc.data()
                 }));
 
-                setLeaderboard(usersData);
+                setLeaderboard(usersData.sort((a, b) => b.blithCredits - a.blithCredits));
             } catch (error) {
                 console.error("Error fetching users:", error);
             }
