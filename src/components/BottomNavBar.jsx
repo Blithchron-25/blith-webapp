@@ -16,7 +16,7 @@ const BottomNavContainer = styled.div`
 	right: 0;
 	z-index: 100;
 	border-radius: 20px 20px 0 0;
-	height: 80px;
+	height: 90px;
 `;
 
 const NavItem = styled.div`
@@ -33,8 +33,8 @@ const NavItem = styled.div`
 `;
 
 const IconContainer = styled.div`
-	width: 80px;
-	height: 40px;
+	width: 60px;
+	height: 60px;
 	border-radius: 50%;
 	background-color: ${props =>
 		// @ts-ignore
@@ -42,7 +42,6 @@ const IconContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 4px;
 `;
 
 const Icon = styled.span`
