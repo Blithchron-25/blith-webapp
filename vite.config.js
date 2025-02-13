@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 
 const manifestForPlugIn = {
 	registerType: "prompt",
-	includeAssests: ["favicon.ico"],
+	includeAssests: ["favicon.ico", "android-chrome-512x512.png"],
 	manifest: {
 		name: "BlithApp",
 		short_name: "BlithApp",
@@ -55,7 +55,7 @@ const manifestForPlugIn = {
 				sizes: "320x900",
 				type: "image/png",
 				form_factor: "narrow",
-				label: "Home",
+				label: "Events view",
 			},
 		],
 	},
