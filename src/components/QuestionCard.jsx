@@ -73,17 +73,17 @@ function QuestionCard({queId}) {
 		} else if (example.type == 'file') {
 			correct = await checkLegitimacy(ans);
 		}
-		const rdata = { userId: currentUser.uid, blithCredits: 30 };
-		const res = await addcredits(rdata);
-		const d = await res.json();
-		// console.log(d);
+		if(correct){
+			const rdata = { userId: currentUser.uid, blithCredits: 30 };
+			const res = await addcredits(rdata);
 
-		if (res.data.blithCredits !== 0) {
-			console.log('Blith Credits Added Successfully');
-			setQuestion(queId);
-			navigate("/profile");
-		} else {
-			console.error('Error Adding Blith Credits');
+			if (res.data.blithCredits !== 0) {
+				console.log('Blith Credits Added Successfully');
+				setQuestion(queId);
+				navigate("/profile");
+			} else {
+				console.error('Error Adding Blith Credits');
+			}
 		}
 	}
 
@@ -106,7 +106,7 @@ function QuestionCard({queId}) {
 						}
 						required
 					/>
-					<button className="btn" onClick={async () => handleClick()}>
+					<button className="btn" onClick={async () => await handleClick()}>
 						<FaPaperPlane />
 					</button>
 				</div>
