@@ -42,6 +42,15 @@ const manifestForPlugIn = {
 		scope: "/",
 		start_url: "/",
 		orientation: "portrait",
+		screenshots: [
+			{
+			src: "source/image1.png",
+			sizes: "640x320",
+			type: "image/png",
+			form_factor: "wide",
+			label: "Wonder Widgets"
+			}
+		]
 	},
 };
 

@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
+
+#profile_bkg {
+	background: url("/src/assets/profile.jpg");
+	filter: brightness(70%) contrast(100%);
+	z-index: -1;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100%;
+	width: 100%;
+	color: black;
+	border-radius: 1em;
+	box-shadow: 0 0 1em #00000022;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+}
+
+#profile {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	z-index: 2;
+}
+
+#user-info {
+	margin-top: 20%;
+}
+
+#profile_picture {
+	width: 10em;
+	height: 10em;
+	border-radius: 50%;
+	margin: 0 auto;
+	box-shadow: 0 0 1em #00000022;
+}
+
+#user-info div {
+	font-size: 2em;
+	font-family: "Figtree", sans-serif;
+	font-weight: bold;
+	text-shadow: 0 4px 10px #c931ff;
+	color: white;
+}
