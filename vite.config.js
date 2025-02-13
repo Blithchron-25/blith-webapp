@@ -7,8 +7,8 @@ const manifestForPlugIn = {
 	registerType: "prompt",
 	includeAssests: ["favicon.ico"],
 	manifest: {
-		name: "Blith App",
-		short_name: "blithapp",
+		name: "BlithApp",
+		short_name: "BlithApp",
 		description: "App for Blithchron 2025",
 		icons: [
 			{
