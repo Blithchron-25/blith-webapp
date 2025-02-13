@@ -20,9 +20,9 @@ const LandingPage = () => {
       <div style={{ height: "100vh", scrollSnapAlign: "start" }}>
         <Page2 />
       </div>
-      <div style={{ height: "100vh", scrollSnapAlign: "start" }}>
+      {/* <div style={{ height: "100vh", scrollSnapAlign: "start" }}>
         <Page3 />
-      </div>
+      </div> */}
       <div style={{ height: "100vh", scrollSnapAlign: "start" }}>
         <Page4 />
       </div>
