@@ -5,7 +5,7 @@ import { getAuth } from "firebase/auth";
 import './stylesheets/profile.css';
 import coin from '../assets/coin1.png';
 import { useAuth } from "../firebase/AuthContext";
-
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 
 function Profile() {
@@ -15,6 +15,7 @@ function Profile() {
     const auth = getAuth(app);
 
     const { currentUser } = useAuth();
+    const { logout } = useAuth();
     const user = currentUser;
 
 useEffect(() => {
@@ -44,6 +45,10 @@ useEffect(() => {
     });
   }
 
+  const handleLogout = async () => {
+    await logout();
+  };
+
     return (
         <div id="profile-page">
             <div id="profile_bkg"></div>
@@ -60,6 +65,10 @@ useEffect(() => {
                         </div>
                         <h3 className="text-xl mt-[10px] mb-[40px] font-bold drop-shadow-lg text-white" style={{ textShadow: "5px 0px 10px rgb(156, 10, 119)"}}>{blithCredits}</h3>
                     </div>
+                    <button onClick={handleLogout} className="bg-sidemenu text-2xl flex flex-row items-center justify-center mt-4">
+                        LogOut
+                        <RiLogoutCircleRLine size={20} className="ml-2" />
+                    </button>
                 </div>
             </div>
         </div>
