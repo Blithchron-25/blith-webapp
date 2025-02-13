@@ -83,6 +83,7 @@ function BottomNavBar() {
 				// @ts-ignore
 				active={activeTab === "scanner"}
 				onClick={() => handleTabChange("scanner")}
+				style={{ marginLeft: "20px" }}
 			>
 				<IconContainer
 					// @ts-ignore
