@@ -1,5 +1,6 @@
 .ques-container {
-	background-color: #0f0f0f;
+	/* background-color: #0f0f0f; */
+	background-image: url('../../assets/event-bg.jpg');
 	position: relative;
 	width: 100vw;
 	height: 100vh;
