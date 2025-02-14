@@ -47,7 +47,7 @@ const Leaderboard = () => {
 	return (
 		<div>
 			<h1>Leaderboard</h1>
-			<div className="leaderboard-container">
+			<div className="leaderboard-container overflow-y-auto">
 				{leaderboard.length > 0 ? (
 					leaderboard.map(user => <LeaderCard key={user.id} user={user} />)
 				) : (
