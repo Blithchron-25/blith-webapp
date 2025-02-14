@@ -45,14 +45,14 @@ const manifestForPlugIn = {
 		screenshots: [
 			{
 				src: "/screenshot1.png",
-				sizes: "320x900",
+				sizes: "397x892",
 				type: "image/png",
 				form_factor: "narrow",
 				label: "Home",
 			},
 			{
 				src: "/screenshot2.png",
-				sizes: "320x900",
+				sizes: "398x891",
 				type: "image/png",
 				form_factor: "narrow",
 				label: "Events view",
