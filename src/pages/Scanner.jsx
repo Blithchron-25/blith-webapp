@@ -41,9 +41,9 @@ const QRScan = () => {
                     style={{ width: "60%", height: "60%" }}
                     onError={handleError}
                     onScan={handleScan}
-                    // constraints={{
-                    //     video: { facingMode: { exact: "environment" } } // Forces back camera
-                    // }}
+                    constraints={{
+                        video: { facingMode: { exact: "environment" } } // Forces back camera
+                    }}
                 />
                 <Link to="/">
                 <button
